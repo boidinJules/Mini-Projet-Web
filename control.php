@@ -3,11 +3,16 @@
 if (isset($_POST['action'])) {
     // Récupère l'action choisie par l'utilisateur (on ou off)
     $action = escapeshellarg($_POST['action']); // Sécurise l'argument pour éviter les injections
-
     // Définit la commande pour exécuter le script Python avec l'argument approprié
-    $command = "python3 /path/to/led_control.py $action"; // Remplacez par le chemin correct vers votre script
+    if ($action == "'on'"){
+    $command = "python3 /var/www/html/Mini-Projet-Web/led_control.py on"; 
+    }
+    else{
+    $command = "python3 /var/www/html/Mini-Projet-Web/led_control.py off"; 
+    }
 
     // Exécute la commande shell
-    shell_exec($command); // Appelle le script Python pour allumer ou éteindre la LED
+    $shell = shell_exec($command); // Appelle le script Python pour allumer ou éteindre la LED
+    echo($shell);
 }
 ?>

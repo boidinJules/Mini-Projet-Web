@@ -1,8 +1,10 @@
 import RPi.GPIO as GPIO
 import sys
 
+
 # Configuration du GPIO
-LED_PIN = 18  # Numéro du pin GPIO où la LED est connectée
+LED_PIN = 26  # Numéro du pin GPIO où la LED est connectée
+#GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LED_PIN, GPIO.OUT)
 
@@ -13,6 +15,7 @@ if len(sys.argv) != 2:
 
 command = sys.argv[1].lower()
 if command == "on":
+    print('on')
     GPIO.output(LED_PIN, GPIO.HIGH)
 elif command == "off":
     GPIO.output(LED_PIN, GPIO.LOW)
@@ -20,4 +23,4 @@ else:
     print("Commande non reconnue. Utilisez 'on' ou 'off'.")
     sys.exit(1)
 
-GPIO.cleanup()
+
