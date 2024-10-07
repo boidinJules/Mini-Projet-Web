@@ -8,7 +8,10 @@ if (isset($_POST['action'])) {
     }
 
 
-    exec("sudo -u www-data $command ");
+    $state = exec("sudo -u www-data $command ");
+    $obj->led = $state;
+    $res =json_encode($obj);
+    echo($res);
 }
 ?>
 

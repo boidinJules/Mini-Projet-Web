@@ -7,9 +7,12 @@
 </head>
 <body>
     <h1>Contrôle de la LED</h1>
-    <form method="POST" action="control.php">
-        <button type="submit" name="action" value="on">Allumer la LED</button>
-        <button type="submit" name="action" value="off">Éteindre la LED</button>
-    </form>
+    <ul>
+        <li><button onclick="switch_led('on')">Allumer la LED</button></li>
+        <li><button onclick="switch_led('off')">Éteindre la LED</button></li>
+    </ul>
+    <div id="response"></div>
+    <img id="ledImage" src="off.png" alt="LED is off" style="display: none;">
+    <script src="MyButon.js"></script>
 </body>
 </html>
