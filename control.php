@@ -8,7 +8,9 @@ if (isset($_POST['action'])) {
     }
 
 
-    exec("sudo -u www-data $command ");
+    $res = exec("sudo -u www-data $command ");
+    include( 'MyButon.html' );
+    echo($res);
 }
 ?>
 
