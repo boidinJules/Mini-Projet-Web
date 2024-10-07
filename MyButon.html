@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrôle de la LED</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .led-image {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Contrôle de la LED</h1>
-    <form method="POST" action="control.php">
-        <button type="submit" name="action" value="on">Allumer la LED</button>
-        <button type="submit" name="action" value="off">Éteindre la LED</button>
-    </form>
+    <div class="container">
+        <h1>Contrôle de la LED</h1>
+        <form method="POST" action="control.php">
+            <button type="submit" name="action" value="on">Allumer la LED</button>
+            <button type="submit" name="action" value="off">Éteindre la LED</button>
+        </form>
+        <!-- Affichage de l'image de la LED -->
+        <div class="led-image">
+            <?php if (isset($image)): ?>
+                <img src="<?php echo $image; ?>">
+            <?php endif; ?>
+        </div>
+    </div>
 </body>
 </html>

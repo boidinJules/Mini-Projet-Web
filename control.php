@@ -10,7 +10,7 @@ if (isset($_POST['action'])) {
 
     $res = exec("sudo -u www-data $command ");
     include( 'MyButon.html' );
+    $image = ($res == 'on') ? 'images/led_on.jpg' : 'images/led_off.jpg';
     echo($res);
 }
 ?>
-
