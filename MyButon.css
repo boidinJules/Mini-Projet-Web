@@ -1,0 +1,35 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.color-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.slider {
+    margin-left: 10px;
+    width: 150px; /* Ajout d'une largeur pour les sliders */
+}
+
+.value {
+    margin-left: 10px;
+    font-weight: bold;
+}

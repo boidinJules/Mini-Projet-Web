@@ -4,42 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrôle de la Couleur</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-
-        .color-circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: rgb(0, 0, 0);
-            margin-bottom: 20px;
-        }
-
-        .slider-container {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-        }
-
-        .slider {
-            margin-left: 10px;
-            width: 150px; /* Ajout d'une largeur pour les sliders */
-        }
-
-        .value {
-            margin-left: 10px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="MyButon.css">
 </head>
 <body>
     <div class="color-circle" id="colorCircle"></div>
@@ -62,28 +27,6 @@
         <span class="value" id="blueValue">0</span>
     </div>
 
-    <script>
-        const colorCircle = document.getElementById('colorCircle');
-        const redSlider = document.getElementById('red');
-        const greenSlider = document.getElementById('green');
-        const blueSlider = document.getElementById('blue');
-        const redValue = document.getElementById('redValue');
-        const greenValue = document.getElementById('greenValue');
-        const blueValue = document.getElementById('blueValue');
-
-        function updateColor() {
-            const red = redSlider.value;
-            const green = greenSlider.value;
-            const blue = blueSlider.value;
-            colorCircle.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-            redValue.textContent = red;
-            greenValue.textContent = green;
-            blueValue.textContent = blue;
-        }
-
-        redSlider.addEventListener('input', updateColor);
-        greenSlider.addEventListener('input', updateColor);
-        blueSlider.addEventListener('input', updateColor);
-    </script>
+    <script src="MyButon.js"></script>
 </body>
 </html>
