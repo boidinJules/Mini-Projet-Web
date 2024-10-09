@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 body {
     display: flex;
-=======
-
-body {
-    display: flex;
-    flex-direction: column;
->>>>>>> 740286d4ba75e283cab9822ab06a28be68d8336d
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-<<<<<<< HEAD
     background-image: url('Wallpapers.jpeg'); /* Chemin vers l'image */
     background-size: cover; /* L'image couvre l'écran */
     background-position: center; /* L'image est centrée */
@@ -31,20 +23,13 @@ body {
     border: 2px solid #ccc;
     box-shadow: 0 4px 8px rgb(253, 253, 253);
     border-radius: 10px;
-=======
-    background-color: #f0f0f0;
->>>>>>> 740286d4ba75e283cab9822ab06a28be68d8336d
 }
 
 .color-circle {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-<<<<<<< HEAD
     background-color: rgb(255, 255, 255);
-=======
-    background-color: rgb(0, 0, 0);
->>>>>>> 740286d4ba75e283cab9822ab06a28be68d8336d
     margin-bottom: 20px;
 }
 
@@ -56,17 +41,12 @@ body {
 
 .slider {
     margin-left: 10px;
-<<<<<<< HEAD
     width: 150px;
-=======
-    width: 150px; /* Ajout d'une largeur pour les sliders */
->>>>>>> 740286d4ba75e283cab9822ab06a28be68d8336d
 }
 
 .value {
     margin-left: 10px;
     font-weight: bold;
-<<<<<<< HEAD
 }
 
 label {
@@ -82,7 +62,7 @@ label {
 
 button {
     background-color: rgba(255, 255, 255, 0);
-    color: rgb(255, 255, 255); /* Couleur du texte */
+    color: rgb(255, 255, 255); 
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -94,6 +74,3 @@ button {
 button:hover {
     text-decoration: underline;
 }
-=======
-}
->>>>>>> 740286d4ba75e283cab9822ab06a28be68d8336d
