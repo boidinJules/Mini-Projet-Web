@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle de la Couleur</title>
+    <link rel="stylesheet" href="MyButon.css">
+</head>
+<body>
+    <div id="tsparticles"></div>
+    <!-- Conteneur carré -->
+    <div class="square-container">
+        <div class="color-circle" id="colorCircle"></div>
+
+        <div class="slider-container">
+            <label for="red">R </label>
+            <input type="range" id="red" class="slider" min="0" max="255" value="0" />
+            <span class="value" id="redValue">0</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="green">G </label>
+            <input type="range" id="green" class="slider" min="0" max="255" value="0" />
+            <span class="value" id="greenValue">0</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="blue">B </label>
+            <input type="range" id="blue" class="slider" min="0" max="255" value="0" />
+            <span class="value" id="blueValue">0</span>
+        </div>
+
+        <div class="button-container">
+            <button id="turnOnButton">Allumer</button>
+            <button id="turnOffButton">Éteindre</button>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3"></script>
+    <script src="MyButon.js"></script>
+
+</body>
+</html>
