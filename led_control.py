@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import time
 import RPi.GPIO as GPIO
-import sys
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
 
 # Configuration des broches GPIO
 G = 18
@@ -19,32 +20,40 @@ R_pin = GPIO.PWM(R, 100)
 G_pin = GPIO.PWM(G, 100)
 B_pin = GPIO.PWM(B, 100)
 
-# Récupération des valeurs de couleur depuis les arguments en ligne de commande
-R_color = int(sys.argv[1])
-G_color = int(sys.argv[2])
-B_color = int(sys.argv[3])
-
-# Affichage de la valeur de la broche R (peut être supprimé si vous n'en avez pas besoin)
-print(int(R_color * 100 // 255))
-
 # Démarrage des broches PWM
-R_pin.start(50)
+R_pin.start(0)
 G_pin.start(0)
 B_pin.start(0)
 
-# Réglage des cycles de service pour chaque couleur
-R_pin.ChangeDutyCycle(R_color * 100 // 256)
-G_pin.ChangeDutyCycle(G_color * 100 // 256)
-B_pin.ChangeDutyCycle(B_color * 100 // 256)
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)
+        color = json.loads(post_data)
+        
+        R_color = color['R']
+        G_color = color['G']
+        B_color = color['B']
 
+        # Réglage des cycles de service pour chaque couleur
+        R_pin.ChangeDutyCycle(R_color * 100 // 256)
+        G_pin.ChangeDutyCycle(G_color * 100 // 256)
+        B_pin.ChangeDutyCycle(B_color * 100 // 256)
 
-print(f'RGB = ({R_color}, {G_color}, {B_color})')
-# Attente pendant 5 secondes (vous pouvez ajuster cette durée selon vos besoins)
-time.sleep(5)
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Color changed')
 
-# Arrêt des broches PWM
-R_pin.stop()
-G_pin.stop()
-B_pin.stop()
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=8080):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print('Starting httpd...')
+    httpd.serve_forever()
 
-GPIO.cleanup()
+try:
+    run()
+except KeyboardInterrupt:
+    R_pin.stop()
+    G_pin.stop()
+    B_pin.stop()
+    GPIO.cleanup()
