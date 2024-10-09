@@ -21,30 +21,34 @@ redSlider.addEventListener('input', updateColor);
 greenSlider.addEventListener('input', updateColor);
 blueSlider.addEventListener('input', updateColor);
 
-function LED_Color(val) {
+function LED_Color() {
+    const red = redSlider.value;
+    const green = greenSlider.value;
+    const blue = blueSlider.value;
+    val =[red,green,blue]
     fetch('control.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-            'action': action
+            'color': val
         })
     })
     .then(response => response.text())
     .then(res => {
-        action = JSON.parse(res);
-        console.log(action.led);
+        // action = JSON.parse(res);
+        console.log(res);
         
-        const ledImage = document.getElementById('ledImage');
-        if (action.led === 'on') {
-            ledImage.src = 'led_on.jpg';
-            ledImage.alt = 'LED is on';
-        } else {
-            ledImage.src = 'led_off.jpg';
-            ledImage.alt = 'LED is off';
-        }
-        ledImage.style.display = 'block';
+        // const ledImage = document.getElementById('ledImage');
+        // if (action.led === 'on') {
+        //     ledImage.src = 'led_on.jpg';
+        //     ledImage.alt = 'LED is on';
+        // } else {
+        //     ledImage.src = 'led_off.jpg';
+        //     ledImage.alt = 'LED is off';
+        // }
+        // ledImage.style.display = 'block';
     }
     )
     .catch(error => console.error('Error:', error));
