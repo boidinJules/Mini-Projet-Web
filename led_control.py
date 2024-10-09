@@ -37,6 +37,8 @@ R_pin.ChangeDutyCycle(R_color * 100 // 256)
 G_pin.ChangeDutyCycle(G_color * 100 // 256)
 B_pin.ChangeDutyCycle(B_color * 100 // 256)
 
+
+print(f'RGB = ({R_color}, {G_color}, {B_color})')
 # Attente pendant 5 secondes (vous pouvez ajuster cette durée selon vos besoins)
 time.sleep(5)
 

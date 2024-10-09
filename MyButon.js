@@ -22,10 +22,13 @@ greenSlider.addEventListener('input', updateColor);
 blueSlider.addEventListener('input', updateColor);
 
 function LED_Color() {
+    const btn= document.getElementById('send_btn') 
+    btn.disabled = true;
     const red = redSlider.value;
     const green = greenSlider.value;
     const blue = blueSlider.value;
     val =[red,green,blue]
+
     fetch('control.php', {
         method: 'POST',
         headers: {
@@ -39,6 +42,7 @@ function LED_Color() {
     .then(res => {
         // action = JSON.parse(res);
         console.log(res);
+        btn.disabled = false;
         
         // const ledImage = document.getElementById('ledImage');
         // if (action.led === 'on') {
