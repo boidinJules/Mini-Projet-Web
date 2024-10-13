@@ -15,6 +15,7 @@ function updateColor() {
     redValue.textContent = red;
     greenValue.textContent = green;
     blueValue.textContent = blue;
+    LED_Color();
 }
 
 redSlider.addEventListener('input', updateColor);
@@ -40,19 +41,30 @@ function LED_Color() {
     })
     .then(response => response.text())
     .then(res => {
-        // action = JSON.parse(res);
         console.log(res);
         btn.disabled = false;
-        
-        // const ledImage = document.getElementById('ledImage');
-        // if (action.led === 'on') {
-        //     ledImage.src = 'led_on.jpg';
-        //     ledImage.alt = 'LED is on';
-        // } else {
-        //     ledImage.src = 'led_off.jpg';
-        //     ledImage.alt = 'LED is off';
-        // }
-        // ledImage.style.display = 'block';
+    }
+    )
+    .catch(error => console.error('Error:', error));
+}
+function LED_OFF() {
+    const btn= document.getElementById('turnOffButton') 
+    btn.disabled = true;
+    val =[0,0,0]
+
+    fetch('control.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            'color': val
+        })
+    })
+    .then(response => response.text())
+    .then(res => {
+        console.log(res);
+        btn.disabled = false;
     }
     )
     .catch(error => console.error('Error:', error));
